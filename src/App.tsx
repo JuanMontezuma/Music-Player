@@ -152,7 +152,8 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentIndex = songs.findIndex(s => s.id === currentSong.id);
     if (currentIndex < songs.length - 1) {
       setCurrentSong(songs[currentIndex + 1]);
-      setIsPlaying(false);
+      setIsPlaying(true);
+      audioRef.current?.play();
     }
   };
 
@@ -161,7 +162,8 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentIndex = songs.findIndex(s => s.id === currentSong.id);
     if (currentIndex > 0) {
       setCurrentSong(songs[currentIndex - 1]);
-      setIsPlaying(false);
+      setIsPlaying(true);
+      audioRef.current?.play();
     }
   };
 
