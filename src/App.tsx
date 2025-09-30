@@ -156,7 +156,23 @@ const MusicPlayer: React.FC = () => {
       const data = await response.json();
       
       if (data.success) {
-        setSongs(data.playlist);
+        // Crear un mapa de archivos de audio por ID
+        const audioMap = new Map<number, string>();
+        
+        // Mantener las URLs de audio existentes
+        songs.forEach(song => {
+          if (song.audioUrl && song.id !== songId) {
+            audioMap.set(song.id, song.audioUrl);
+          }
+        });
+        
+        // Actualizar todas las canciones con sus URLs correspondientes
+        const updatedSongs = data.playlist.map((song: Song) => ({
+          ...song,
+          audioUrl: audioMap.get(song.id)
+        }));
+        
+        setSongs(updatedSongs);
         
         // Si la canción eliminada es la actual o la lista quedó vacía
         if (currentSong?.id === songId || data.playlist.length === 0) {
