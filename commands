@@ -1,0 +1,13 @@
+#1 git clone https://github.com/JuanMontezuma/Music-Player.git
+#2 cd Music-Player
+#3 npm install --legacy-peer-deps
+
+#1 cd server
+#2 python -m venv venv
+#3 .\venv\Scripts\Activate.ps1
+#4 pip install -r requirements.txt
+
+#1 .\venv\Scripts\Activate.ps1
+#2 python app.py
+
+#3 npm start
